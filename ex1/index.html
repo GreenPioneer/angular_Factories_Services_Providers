@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <!-- JS -->
+    <script src="https://code.angularjs.org/1.4.5/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-mocks.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+//service style, probably the simplest one
+myApp.service('messageService', function() {
+    this.message = "Services Hello World!"
+    this.create = function() {
+        return this.message
+    };
+});
+
+//factory style, more involved but more sophisticated
+myApp.factory('messageFactory', function() {
+    var message = "Factory Hello World!"
+    return {
+        create: function() {
+            return message
+        }
+    };
+});
+    
+//provider style, full blown, configurable version     
+myApp.provider('message', function() {
+
+    this.name = 'Default';
+
+    this.$get = function() {
+        var name = this.name;
+        return {
+            create: function() {
+                return name + " Hello World!"
+            }
+        }
+    };
+
+    this.setName = function(name) {
+        this.name = name;
+    };
+});
+
+//hey, we can configure a provider!            
+myApp.config(function(messageProvider){
+    messageProvider.setName('Provider');
+});
+        
+myApp.controller('MyCtrl', function ($scope, message, messageFactory, messageService) {
+            $scope.functions = {
+       provider:message.create(),
+        factory:messageFactory.create(),
+        service:messageService.create()};
+        });
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="MyCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                 <h1>Services</h1>
+                 <div class="alert alert-success" role="alert"><p>{{functions.service}}</p></div>
+                 <h1>Factories</h1>
+                 <div class="alert alert-success" role="alert"><p>{{functions.factory}}</p></div>
+                 <h1>Providers</h1>
+                 <div class="alert alert-success" role="alert"><p>{{functions.provider}}</p></div>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- Container -->
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <!-- JS -->
+    <script src="https://code.angularjs.org/1.4.5/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-mocks.js"></script>
+    <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
+    <script>
+       // create angularjs app
+        var formApp = angular.module('formApp', []);
+        // create angular controller
+        formApp.controller('formController', function ($scope) {
+            //create variables needed  - form data object, submitted forms array
+        });
+    </script>
+</head>
+<body ng-app="formApp" ng-controller="formController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <!-- PAGE HEADER -->
+                <h1>Use this page as a starter page</h1>
+                <h3>Check out the table below to help get a better understanding</h3>
+                <table class="table table-bordered code-table ng-scope">
+                    <thead>
+                    <tr>
+                      <th>Features / Recipe type</th>
+                      <th>Factory</th>
+                      <th>Service</th>
+                      <th>Value</th>
+                      <th>Constant</th>
+                      <th>Provider</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>can have dependencies</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                      <td class="error">no</td>
+                      <td class="error">no</td>
+                      <td class="success">yes</td>
+                    </tr>
+                    <tr>
+                      <td>uses type friendly injection</td>
+                      <td class="error">no</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes*</td>
+                      <td class="success">yes*</td>
+                      <td class="error">no</td>
+                    </tr>
+                    <tr>
+                      <td>object available in config phase</td>
+                      <td class="error">no</td>
+                      <td class="error">no</td>
+                      <td class="error">no</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes**</td>
+                    </tr>
+                    <tr>
+                      <td>can create functions</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                    </tr>
+                    <tr>
+                      <td>can create primitives</td>
+                      <td class="success">yes</td>
+                      <td class="error">no</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                      <td class="success">yes</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- Container -->
+</body>
+</html>
